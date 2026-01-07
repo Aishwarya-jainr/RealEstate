@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -59,7 +59,7 @@ const Listing = () => {
             </Property.HeaderLeft>
             <Property.HeaderRight>
               <Property.Title>
-                Ksh {"   "}
+                ₹{" "}
                 {property.price}
                 <Property.Span>
                   {property.type === "rental" ? "/ Month" : ""}

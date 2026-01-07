@@ -3,7 +3,7 @@ import React from "react";
 import { Listing } from "../components";
 
 const ListingItemContainer = ({ featured, width }) => {
-  
+
   return (
     <Listing width={width}>
       <Listing.Top>
@@ -24,7 +24,7 @@ const ListingItemContainer = ({ featured, width }) => {
               {featured.title}
             </Listing.Anchor>
           </Listing.Title>
-          <Listing.Price>Ksh {featured.price}</Listing.Price>
+          <Listing.Price>₹{featured.price}</Listing.Price>
           <Listing.Text description>
             {featured.description.substring(0, 100)}
           </Listing.Text>

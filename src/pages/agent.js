@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAgent } from "../redux/actions/agentsAction";
@@ -27,11 +27,13 @@ const Agentt = () => {
 
   const contactAgent = { agent };
 
-  const categories = Object.entries(
-    agent.listings
-      .map((listings) => listings.category)
-      .reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {})
-  );
+  const categoryCounts = agent.listings
+    .map((listings) => listings.category)
+    .reduce((prev, curr) => {
+      prev[curr] = (prev[curr] || 0) + 1;
+      return prev;
+    }, {});
+  const categories = Object.entries(categoryCounts);
   const [categoryName, setCategoryName] = useState("All");
 
   const [categoryCount, setCategoryCount] = useState(0);

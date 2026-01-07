@@ -5,11 +5,13 @@ const BarGraph = ({ properties }) => {
   const categoryArray = [
     ...new Set(properties.map((property) => property.category)),
   ];
-  const count = Object.values(
-    properties
-      .map((property) => property.category)
-      .reduce((prev, curr) => ((prev[curr] = ++prev[curr] || 1), prev), {})
-  );
+  const categoryCount = properties
+    .map((property) => property.category)
+    .reduce((prev, curr) => {
+      prev[curr] = (prev[curr] || 0) + 1;
+      return prev;
+    }, {});
+  const count = Object.values(categoryCount);
 
   const state = {
     labels: categoryArray,
